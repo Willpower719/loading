@@ -70,7 +70,7 @@ progress::-webkit-progress-value {
     z-index: -1;
     background-repeat: no-repeat;
     background-size: auto 100%;
-    background-position: center;
+    background-position: 0px 0px;
     border-top: 1px solid #7fa4c5;
     border-bottom: 1px solid #7fa4c5;
 }
@@ -79,7 +79,7 @@ progress::-webkit-progress-value {
     position: relative;
     float: left;
     font-size: 8vh;
-    top: 2.5vh;
+    top: 2vh;
     left: 2vw;
 }
 

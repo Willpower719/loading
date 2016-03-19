@@ -23,7 +23,7 @@ dew.on("show", function (event) {
         $(".footer").show();
     } else {
         $(".container").css("border-width","0");
-        $("body").css("background","url('background.png')");
+        $("body").css("background","url('background.png') center");
         $("body").css("background-size","cover");
         $(".container").css("background-image","none");
         $(".header").hide();
