@@ -66,7 +66,7 @@ progress::-webkit-progress-value {
     max-height: 70vh;
     z-index: -1;
     background-repeat: no-repeat;
-    background-size: auto 100%;
+    background-size: 100%;
     background-position: 0px 0px;
     border-top: 1px solid #7fa4c5;
     border-bottom: 1px solid #7fa4c5;
