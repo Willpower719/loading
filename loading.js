@@ -1,12 +1,34 @@
 var mapName = "";
+var mapData;
+
+$(document).ready(function() {
+    $.getJSON("dew://screens/loading/maps.json", function(json) {
+        mapData = json;
+    });
+});
 
 function updateProgress(progress) {
-    $("#text").text("Loading " + mapName + "... (" + Math.round(progress) + "%)");
+    $("#progressbar").attr('value', progress);
 }
 
 dew.on("show", function (event) {
     mapName = event.data.map || "";
-    $(".container").css("background-image","url('maps/"+mapName+".png')");
+    if(mapData[mapName]){
+        $("body").css("background","black");
+        $(".container").css("border-width","1px 0 1px 0");
+        $(".container").css("background-image","url('maps/"+mapName+".png')");
+        $("#title").text(mapData[mapName].name);
+        $("#desc").text(mapData[mapName].desc);
+        $(".header").show();
+        $(".footer").show();
+    } else {
+        $(".container").css("border-width","0");
+        $("body").css("background","url('background.png')");
+        $("body").css("background-size","cover");
+        $(".container").css("background-image","none");
+        $(".header").hide();
+        $(".footer").hide();
+    }
     updateProgress(0);
 });
 
