@@ -85,7 +85,7 @@ progress::-webkit-progress-value {
 #title {
     position: relative;
     float: left;
-    font-size: 8vh;
+    font-size: 7vh;
     top: 2vh;
     left: 2vw;
 }
@@ -98,5 +98,5 @@ progress::-webkit-progress-value {
     font-size: 2.5vh;
     text-align: right;
     color: #7fa4c5;
-    max-width: 50%;
+    max-width: 40%;
 }
