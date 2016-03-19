@@ -25,6 +25,7 @@ progress {
 
 progress::-webkit-progress-bar {
     background: black;
+    opacity: 0.75;
 }
 
 progress::-webkit-progress-value {
