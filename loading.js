@@ -24,13 +24,18 @@ dew.on("show", function (event) {
             $(".serverName").text(name);
         });
         dew.command("Server.MessageClient", { internal: true }, function (message) {
-            $(".serverMessage").html(textWithNewLines(message));
+            if(message.length > 0){
+                $(".serverMessage").show();
+                $(".serverMessage").html(textWithNewLines(message));
+            } else {
+                $(".serverMessage").hide();
+            }
         });
         $(".header").show();
         $(".footer").show();
     } else {
         $("body").css("background-image","url('background.png')");
-        $(".serverMessage").html("");
+        $(".serverMessage").hide();
         $(".header").hide();
         $(".footer").hide();
     }
