@@ -119,6 +119,7 @@ progress::-webkit-progress-value {
     width: 45vw;
     text-align: center;
     max-height:8vh;
+    word-wrap:break-word;
     overflow:hidden;
 }
 
@@ -127,7 +128,7 @@ progress::-webkit-progress-value {
     float: left;
     top: 0;
     max-height: 80%;
-    max-width: 40%;
+    max-width: 45%;
     left: 0;
     margin: 5.1vh;
     margin-left: 0;
