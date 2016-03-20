@@ -1,12 +1,5 @@
 var mapName = "";
-var mapData;
-var serverMessage = ""
-
-$(document).ready(function() {
-    $.getJSON("dew://screens/loading/maps.json", function(json) {
-        mapData = json;
-    });
-});
+var gameModes = ["slayer","ctf","slayer","oddball","koth","forge","vip","juggernaut","territories","assault","infection"];
 
 function updateProgress(progress) {
     $("#progressbar").attr('value', progress);
@@ -14,16 +7,30 @@ function updateProgress(progress) {
 
 dew.on("show", function (event) {
     mapName = event.data.map || "";
-    if (mapData[mapName]) {
+    if (mapName != "mainmenu") {
         $("body").css("background-image","url('maps/"+mapName+".png')");
-        $("#title").text(mapData[mapName].name);
-        $("#desc").text(mapData[mapName].desc);
-        $(".serverMessage").text(serverMessage);
+        dew.getMapVariantInfo(function (info) {
+            $("#title").text(info.name);
+            $("#desc").text(info.description);
+        });
+        dew.getGameVariantInfo(function (info) {
+            $("#gametypeicon").attr("src","gametypes/"+gameModes[info.mode]+".png");
+            $("#gametype").text(info.name);  
+            $("#gamerounds").text(info.rounds);   
+            $("#gamescore").text(info.scoreToWin);   
+            $("#timelimit").text(info.timeLimit);                
+        });
+        dew.command("Server.NameClient", { internal: true }, function (name) {
+            $(".serverName").text(name);
+        });
+        dew.command("Server.MessageClient", { internal: true }, function (message) {
+            $(".serverMessage").html(textWithNewLines(message));
+        });
         $(".header").show();
         $(".footer").show();
     } else {
         $("body").css("background-image","url('background.png')");
-        $(".serverMessage").text("");
+        $(".serverMessage").html("");
         $(".header").hide();
         $(".footer").hide();
     }
@@ -34,3 +41,13 @@ dew.on("loadprogress", function (event) {
     var progress = event.data.currentBytes / event.data.totalBytes * 100;
     updateProgress(progress);
 });
+
+function textWithNewLines(text) {
+    var htmls = [];
+    var lines = text.split("\\n");
+    var tmpDiv = jQuery(document.createElement('div'));
+    for (var i = 0 ; i < lines.length ; i++) {
+        htmls.push(tmpDiv.text(lines[i].trim()).html());
+    }
+    return htmls.join("<br>");
+}
