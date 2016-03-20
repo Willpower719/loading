@@ -16,9 +16,21 @@ dew.on("show", function (event) {
         dew.getGameVariantInfo(function (info) {
             $("#gametypeicon").attr("src","gametypes/"+gameModes[info.mode]+".png");
             $("#gametype").text(info.name);  
-            $("#gamerounds").text(info.rounds);   
-            $("#gamescore").text(info.scoreToWin);   
-            $("#timelimit").text(info.timeLimit);                
+            if(info.rounds > 0){
+                $("#gamerounds").text(info.rounds);  
+            } else {
+                $("#gamerounds").text("Unlimited"); 
+            }
+            if(info.scoreToWin > -1){
+                $("#gamescore").text(info.scoreToWin);   
+            } else {
+                $("#gamescore").text("Unlimited");  
+            }
+            if(info.timeLimit > 0){
+                $("#timelimit").text(timeConvert(info.timeLimit)); 
+            } else {
+                $("#timelimit").text("Unlimited");  
+            }                
         });
         dew.command("Server.NameClient", { internal: true }, function (name) {
             $(".serverName").text(name);
@@ -55,4 +67,11 @@ function textWithNewLines(text) {
         htmls.push(tmpDiv.text(lines[i].trim()).html());
     }
     return htmls.join("<br>");
+}
+
+function timeConvert(mins){
+  var hours = Math.trunc(mins/60);
+  var minutes = mins % 60;
+  if (minutes <= 9) { minutes = "0" + minutes; };
+  return hours +":"+ minutes;
 }

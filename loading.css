@@ -58,18 +58,20 @@ progress::-webkit-progress-value {
 }
 
 .header img{
-    position: relative;
-    top: -1vh;
-    height: 16vh;
+    position: absolute;
+    top: 1.5vh;
+    height: 12vh;
     padding: 0;
 }
 
+#logo {
+    float: left;
+    left: 1vw;   
+}
+
 #gametypeicon {
-    position: absolute;
     float: right;
-    top: 1.5vh;
     right: 1vw;
-    height: 12vh;
 }
 
 #gametype, .gamerounds, .gamescore, .timelimit {
@@ -110,15 +112,16 @@ progress::-webkit-progress-value {
 }
 
 .serverName {
-    position: absolute;
-    left: 30vw;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
     top: 50%; 
     transform: translateY(-50%);
     font-size: 3.5vh;
     line-height: 4vh;
     width: 45vw;
     text-align: center;
-    max-height:8vh;
+    max-height:14vh;
     word-wrap:break-word;
     overflow:hidden;
 }
