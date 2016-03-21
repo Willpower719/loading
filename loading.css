@@ -44,6 +44,7 @@ progress::-webkit-progress-value {
     background-color: black;
     opacity: 0.9;
     border-bottom: 1px solid #7fa4c5;
+	display: none;
 }
 
 .footer{
@@ -55,6 +56,7 @@ progress::-webkit-progress-value {
     background-color: black;
     opacity: 0.9;
     border-top: 1px solid #7fa4c5;
+	display: none;
 }
 
 .header img{
@@ -138,6 +140,7 @@ progress::-webkit-progress-value {
     font-size: 3.5vh;
     padding: 1.5vw;
     background-color: rgba(0, 0, 0, 0.6);
+	display: none;
 }
 
 #title {
