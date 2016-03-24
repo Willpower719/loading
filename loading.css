@@ -15,7 +15,7 @@ div.clouds {
 	background-size: calc(100% + 200px) 55%, calc(100% + 200px) 70%;
 	background-position: 100% calc(100% - 50px), 0% calc(100% - 50px);
 	background-repeat: no-repeat;
-	animation-duration: 10s;
+	animation-duration: 20s;
 	animation-delay: 0s;
 	animation-name: clouds;
 	animation-direction: alternate;
@@ -34,7 +34,7 @@ div.stars {
 	background-size: cover;
 	background-position: 50% 0%;
 	background-repeat: repeat;
-	animation-duration: 40s;
+	animation-duration: 500s;
 	animation-delay: 0s;
 	animation-name: stars;
 	animation-direction: normal;
