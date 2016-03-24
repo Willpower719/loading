@@ -8,6 +8,10 @@ function updateProgress(progress) {
 dew.on("show", function (event) {
     mapName = event.data.map || "";
     if (mapName != "mainmenu") {
+		$(".stars").hide();
+		$(".ring").hide();
+		$(".clouds").hide();
+		$(".eldorito").hide();
         $("body").css("background-image","url('maps/"+mapName+".png')");
         dew.getMapVariantInfo(function (info) {
             $("#title").text(info.name);
@@ -46,6 +50,10 @@ dew.on("show", function (event) {
         $(".header").show();
         $(".footer").show();
     } else {
+		$(".stars").show();
+		$(".ring").show();
+		$(".clouds").show();
+		$(".eldorito").show();
         $("body").css("background-image","url('background.png')");
         $(".serverMessage").hide();
         $(".header").hide();
