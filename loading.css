@@ -166,6 +166,10 @@ progress::-webkit-progress-value {
 
 /* Generic Loading Screen */
 
+.generic  {
+    display: none;
+}
+
 .generic .clouds {
     position: absolute;
     margin: 0;
