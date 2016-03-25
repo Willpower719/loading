@@ -3,18 +3,22 @@ var gameModes = ["slayer","ctf","slayer","oddball","koth","forge","vip","juggern
 
 function updateProgress(progress) {
     $("#progressbar").attr('value', progress);
+    progress = 100 - progress;
+    $(".loading").css({"-webkit-clip-path": "inset(" + progress + "% 0 0 0)"});
 }
 
 dew.on("show", function (event) {
     mapName = event.data.map || "";
     if (mapName != "mainmenu") {
-        $("body").css("background-image","url('maps/"+mapName+".png')");
+        $(".generic").hide();
+        $(".container").show();
+        $("body").css({backgroundImage: "url('images/maps/" + mapName + ".png')"});
         dew.getMapVariantInfo(function (info) {
             $("#title").text(info.name);
             $("#desc").text(info.description);
         });
         dew.getGameVariantInfo(function (info) {
-            $("#gametypeicon").attr("src","gametypes/"+gameModes[info.mode]+".png");
+            $("#gametypeicon").attr("src", "images/gametypes/" + gameModes[info.mode] + ".png");
             $("#gametype").text(info.name);  
             if(info.rounds > 0){
                 $("#gamerounds").text(info.rounds);  
@@ -46,9 +50,9 @@ dew.on("show", function (event) {
         $(".header").show();
         $(".footer").show();
     } else {
-        $("body").css("background-image","url('background.png')");
-        $(".serverMessage").hide();
+        $(".generic").show();
         $(".header").hide();
+        $(".container").hide();
         $(".footer").hide();
     }
     updateProgress(0);
@@ -70,8 +74,8 @@ function textWithNewLines(text) {
 }
 
 function timeConvert(mins){
-  var hours = Math.trunc(mins/60);
-  var minutes = mins % 60;
-  if (minutes <= 9) { minutes = "0" + minutes; };
-  return hours +":"+ minutes;
+    var hours = Math.trunc(mins/60);
+    var minutes = mins % 60;
+    if (minutes <= 9) { minutes = "0" + minutes; };
+    return hours +":"+ minutes;
 }
